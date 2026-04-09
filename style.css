@@ -1,0 +1,444 @@
+/* =========================================
+   GLOBALES
+========================================= */
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #050810;
+    color: #e0e0e0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* =========================================
+   BANNER SUPERIOR
+========================================= */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    background: radial-gradient(circle, #101626 0%, #050810 70%);
+    overflow: hidden;
+    padding: 20px;
+}
+
+.banner-animado {
+    max-width: 80%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    animation: pulsoCibernetico 6s ease-in-out infinite;
+}
+
+@keyframes pulsoCibernetico {
+    0%   { transform: translateY(0px);   filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.3)); }
+    50%  { transform: translateY(-15px); filter: drop-shadow(0 0 35px rgba(138, 43, 226, 0.7)); }
+    100% { transform: translateY(0px);   filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.3)); }
+}
+
+/* =========================================
+   BADGE DISPONIBILIDAD
+========================================= */
+.disponibilidad-badge {
+    display: flex;
+    justify-content: center;
+    margin: -18px auto 0 auto;
+    position: relative;
+    z-index: 20;
+}
+
+.badge-inner {
+    background: rgba(15, 23, 42, 0.9);
+    border: 2px solid #00ff00;
+    border-radius: 30px;
+    padding: 6px 20px;
+    font-size: 0.82em;
+    color: #00ff00;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 0 16px rgba(0, 255, 0, 0.25), 0 2px 8px rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.badge-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #00ff00;
+    box-shadow: 0 0 8px #00ff00;
+    animation: parpadeo 1.5s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+@keyframes parpadeo {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.2; }
+}
+
+/* =========================================
+   DASHBOARD DE CRISTAL
+========================================= */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    max-width: 1100px;
+    margin: 30px auto 50px auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.panel-glass {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Estabilizado */
+    /* Evitar temblores en el renderizado */
+    will-change: border-color, box-shadow;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0); /* Fuerza aceleración por hardware estática */
+}
+
+.panel-glass:hover {
+    border-color: rgba(138, 43, 226, 0.6);
+    /* Añado un brillo para mantener el efecto "encendido" sin mover la caja */
+    box-shadow: 0 8px 32px rgba(138, 43, 226, 0.2);
+}
+
+.panel-largo {
+    grid-column: 1 / -1;
+    align-items: start;
+}
+
+/* =========================================
+   TEXTOS Y LEDs
+========================================= */
+.panel-titulo {
+    font-size: 1.1em;
+    color: #fff;
+    margin-top: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.led {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: inline-block;
+    flex-shrink: 0;
+}
+.verde   { background: #00ff00; box-shadow: 0 0 8px #00ff00; }
+.azul    { background: #00ffff; box-shadow: 0 0 8px #00ffff; }
+.morado  { background: #8a2be2; box-shadow: 0 0 8px #8a2be2; }
+.naranja { background: #f97316; box-shadow: 0 0 8px #f97316; }
+
+/* =========================================
+   HABILIDADES (Barras)
+========================================= */
+.skill-item {
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.skill-pct {
+    color: #00ffff;
+    font-weight: bold;
+    font-size: 0.85em;
+}
+
+.barra-fondo {
+    width: 100%;
+    height: 8px;
+    background: #222;
+    border-radius: 4px;
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+.barra-progreso {
+    height: 100%;
+    background: linear-gradient(90deg, #8a2be2, #00ffff);
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+/* =========================================
+   TAGS DE TECNOLOGÍA
+========================================= */
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.tag {
+    background: rgba(0, 255, 255, 0.06);
+    border: 1px solid rgba(0, 255, 255, 0.25);
+    color: #00ffff;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 0.78em;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.tag:hover {
+    background: rgba(0, 255, 255, 0.15);
+    border-color: #00ffff;
+}
+
+/* =========================================
+   FORMACIÓN / CURSOS
+========================================= */
+.curso-item {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 18px;
+    align-items: flex-start;
+}
+
+.curso-icono {
+    font-size: 1.4em;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.curso-info strong {
+    display: block;
+    color: #e0e0e0;
+    font-size: 0.95em;
+    margin-bottom: 2px;
+}
+
+.curso-info span {
+    color: #aaa;
+    font-size: 0.82em;
+}
+
+.curso-badge {
+    display: inline-block;
+    margin-top: 5px;
+    background: rgba(249, 115, 22, 0.1);
+    border: 1px solid rgba(249, 115, 22, 0.4);
+    color: #fb923c;
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 0.75em;
+    font-weight: bold;
+}
+
+/* =========================================
+   EXPERIENCIA (Logs)
+========================================= */
+.log-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    font-size: 0.95em;
+    border-left: 2px solid #8a2be2;
+    padding-left: 15px;
+}
+
+.log-time {
+    color: #00ffff;
+    min-width: 120px;
+}
+
+/* =========================================
+   TARJETAS DE GITHUB
+========================================= */
+.grid-proyectos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.repo-card {
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 18px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.repo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
+    border-color: rgba(0, 255, 255, 0.35);
+}
+
+.repo-card h3 { margin-top: 0; color: #fff; font-size: 1.1em; }
+.repo-card p  { font-size: 0.85em; color: #aaa; }
+.repo-card a  { color: #8a2be2; text-decoration: none; font-weight: bold; }
+.repo-card a:hover { color: #00ffff; }
+
+/* =========================================
+   BOTONES DE CONTACTO / CV
+========================================= */
+.botones-contacto {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-cibernetico {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #00ffff;
+    color: #00ffff;
+    text-decoration: none;
+    border-radius: 5px;
+    background: rgba(0, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1em;
+}
+
+.btn-cibernetico:hover {
+    background: rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-destacado {
+    border-color: #8a2be2;
+    color: #8a2be2;
+    background: rgba(138, 43, 226, 0.05);
+}
+
+.btn-destacado:hover {
+    background: rgba(138, 43, 226, 0.2);
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.4);
+    color: #fff;
+}
+/* =========================================
+   MODAL CV
+========================================= */
+.modal-cv {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 5, 10, 0.85);
+    backdrop-filter: blur(8px);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-contenido {
+    position: relative;
+    background: #050a0f;
+    margin: 2% auto;
+    padding: 15px;
+    width: 90%;
+    max-width: 900px;
+    border: 1px solid #00f2ff;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0, 242, 255, 0.15);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 242, 255, 0.2);
+    padding-bottom: 8px;
+}
+
+.terminal-text {
+    font-family: monospace;
+    color: #00f2ff;
+    text-shadow: 0 0 5px #00f2ff;
+    font-weight: bold;
+}
+
+.cerrar-modal {
+    color: #ff4444;
+    cursor: pointer;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.wrapper-cv {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    height: 500px;
+    margin: 0 auto;
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+}
+
+.iframe-cv {
+    width: 100%;
+    height: 560px;
+    border: none;
+    margin-top: -50px;
+}
+
+.bloqueo-superior {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 50px;
+    background: rgba(15, 15, 15, 0.95);
+    z-index: 10;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+.bloqueo-inferior {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 35px;
+    background: rgba(15, 15, 15, 0.95);
+    z-index: 10;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+@media (max-width: 768px) {
+    .dashboard-grid { grid-template-columns: 1fr; margin-top: 20px; }
+    .banner-animado { max-width: 95%; }
+}
+
+@media (max-width: 600px) {
+    .wrapper-cv { height: 400px; }
+    .botones-contacto { flex-direction: column; align-items: center; }
+    .badge-inner { font-size: 0.72em; text-align: center; }
+}
+
