@@ -1,3 +1,5 @@
+
+
 /* =========================================
    GLOBALES
 ========================================= */
@@ -10,6 +12,205 @@ body {
     color: #e0e0e0;
     font-family: 'Courier New', Courier, monospace;
 }
+
+/* NEREA */ 
+
+/* =========================================
+   RESET & VARIABLES
+========================================= */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --bg:      #050810;
+    --cyan:    #00d4ff;
+    --green:   #00ff00;
+    --purple:  #8a2be2;
+    --orange:  #f97316;
+    --text:    #e0e0e0;
+    --dim:     #888;
+    --card-bg: rgba(15, 23, 42, 0.6);
+    --border:  rgba(0, 255, 255, 0.15);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: hidden;
+}
+
+/* Anchor scroll offset for fixed nav */
+#about, #skills, #experience, #projects, #contact {
+    scroll-margin-top: 60px;
+}
+
+/* =========================================
+   MATRIX CANVAS (fondo)
+========================================= */
+#matrix-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    opacity: 0.06;
+    pointer-events: none;
+}
+
+/* =========================================
+   SCANLINES CRT
+========================================= */
+.scanlines {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.04) 2px,
+        rgba(0, 0, 0, 0.04) 4px
+    );
+}
+
+
+/* =========================================
+   NAV TERMINAL
+========================================= */
+.terminal-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(5, 8, 16, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 30px;
+}
+
+.nav-brand {
+    color: var(--cyan);
+    font-weight: bold;
+    font-size: 0.9em;
+    text-shadow: 0 0 10px var(--cyan);
+    letter-spacing: 1px;
+    flex-shrink: 0;
+}
+
+.nav-links {
+    display: flex;
+    gap: 22px;
+}
+
+.nav-link {
+    color: var(--dim);
+    text-decoration: none;
+    font-size: 0.8em;
+    letter-spacing: 1px;
+    transition: color 0.2s, text-shadow 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--cyan);
+    text-shadow: 0 0 8px var(--cyan);
+}
+
+/* =========================================
+   FORMACIÓN
+========================================= */
+.cursos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+}
+
+.curso-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(249, 115, 22, 0.1);
+    border-radius: 8px;
+    padding: 14px;
+    transition: border-color 0.25s, background 0.25s;
+}
+
+.curso-item:hover {
+    border-color: rgba(249, 115, 22, 0.35);
+    background: rgba(249, 115, 22, 0.05);
+}
+
+.curso-icono { font-size: 1.4em; flex-shrink: 0; margin-top: 2px; }
+
+.curso-info strong {
+    display: block;
+    color: var(--text);
+    font-size: 0.88em;
+    margin-bottom: 3px;
+}
+
+.curso-info span { color: var(--dim); font-size: 0.79em; }
+
+.curso-badge {
+    display: inline-block;
+    margin-top: 6px;
+    background: rgba(249, 115, 22, 0.08);
+    border: 1px solid rgba(249, 115, 22, 0.4);
+    color: #fb923c;
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 0.72em;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+.site-footer {
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 50px;
+    border-top: 1px solid rgba(0, 212, 255, 0.2);
+    background: rgba(0, 10, 20, 0.4);
+    font-family: 'Courier New', monospace;
+    position: relative;
+    z-index: 10;
+}
+
+.footer-main {
+    color: #00f2ff;
+    font-size: 1rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+    margin-bottom: 8px;
+}
+
+.footer-sub {
+    color: var(--dim);
+    font-size: 0.82rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.footer-tiny {
+    margin-top: 10px;
+    font-size: 0.68rem;
+    color: #333;
+}
+
+
+/* FIN NEREA */
+
+
 
 /* =========================================
    BANNER SUPERIOR
@@ -341,27 +542,29 @@ body {
 /* =========================================
    MODAL CV
 ========================================= */
+/* =========================================
+   MODAL CV - OPTIMIZADO (PC & MÓVIL)
+========================================= */
 .modal-cv {
     display: none;
     position: fixed;
     z-index: 9999;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0, 5, 10, 0.85);
-    backdrop-filter: blur(8px);
+    inset: 0; /* Cubre toda la pantalla */
+    background-color: rgba(0, 5, 10, 0.9);
+    backdrop-filter: blur(10px);
     animation: fadeIn 0.3s ease;
 }
 
 .modal-contenido {
     position: relative;
     background: #050a0f;
-    margin: 2% auto;
+    margin: 2vh auto; /* Margen mínimo arriba para ganar altura */
     padding: 15px;
-    width: 90%;
-    max-width: 900px;
+    width: 95%;        /* Ocupa casi todo el ancho en PC */
+    max-width: 1200px; /* Límite de anchura para monitores muy grandes */
     border: 1px solid #00f2ff;
     border-radius: 8px;
-    box-shadow: 0 0 30px rgba(0, 242, 255, 0.15);
+    box-shadow: 0 0 40px rgba(0, 242, 255, 0.2);
 }
 
 .modal-header {
@@ -390,8 +593,7 @@ body {
 .wrapper-cv {
     position: relative;
     width: 100%;
-    max-width: 700px;
-    height: 500px;
+    height: 82vh; /* Altura dinámica: 82% del alto de la pantalla */
     margin: 0 auto;
     border: 1px solid rgba(0, 255, 255, 0.2);
     border-radius: 8px;
@@ -401,11 +603,11 @@ body {
 
 .iframe-cv {
     width: 100%;
-    height: 560px;
+    height: 100%; /* Que llene todo el espacio disponible */
     border: none;
-    margin-top: -50px;
 }
 
+/* Capas de bloqueo para el visor de PDF */
 .bloqueo-superior {
     position: absolute;
     top: 0; left: 0;
@@ -423,11 +625,26 @@ body {
     z-index: 10;
 }
 
+/* --- AJUSTES ESPECÍFICOS PARA MÓVIL --- */
+@media (max-width: 600px) {
+    .modal-contenido {
+        margin: 1vh auto;
+        width: 98%;
+        padding: 10px;
+    }
+
+    .wrapper-cv {
+        height: 85vh; /* Aún más alto en móvil para facilitar lectura */
+    }
+
+    .bloqueo-superior { height: 40px; }
+    .bloqueo-inferior { height: 30px; }
+}
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-20px); }
     to   { opacity: 1; transform: translateY(0); }
 }
-
 /* =========================================
    RESPONSIVE
 ========================================= */
@@ -442,3 +659,20 @@ body {
     .badge-inner { font-size: 0.72em; text-align: center; }
 }
 
+/* Este es el bloque nuevo para móviles pequeños */
+@media (max-width: 520px) {
+    .botones-contacto {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        width: 100%;
+        max-width: 280px;
+        margin: 20px auto 0 auto;
+        gap: 10px;
+    }
+
+    .btn-cibernetico {
+        width: 100% !important;
+        text-align: center;
+        padding: 12px;
+    }
+}
