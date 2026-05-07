@@ -5,81 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nerea GF | IT Systems Technician</title>
 
-    <!-- SEO -->
     <meta name="description" content="Portfolio de Nerea GF, Técnica de Sistemas Linux. Especializada en Linux/RHEL, despliegues PROD/NON-PROD, Nagios, Control-M, JBoss/WildFly y gestión de incidencias.">
     <meta name="keywords" content="Linux, RHEL, JBoss, WildFly, Nagios, Control-M, Bash, IT Systems, Técnica Sistemas, ServiceDesk, SLA, LadyKernel">
     <meta name="author" content="Nerea GF">
     <meta name="robots" content="index, follow">
 
-    <!-- Open Graph -->
-    <meta property="og:title"       content="Nerea GF | IT Systems Technician">
+    <meta property="og:title" content="Nerea GF | IT Systems Technician">
     <meta property="og:description" content="Técnica de Sistemas Linux con experiencia en entornos de producción, despliegues, monitorización y gestión de incidencias.">
-    <meta property="og:type"        content="website">
-    <meta property="og:url"         content="https://www.lksys.es">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.lksys.es">
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card"        content="summary_large_image">
-    <meta name="twitter:title"       content="Nerea GF | IT Systems Technician">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nerea GF | IT Systems Technician">
     <meta name="twitter:description" content="Técnica de Sistemas Linux. Linux/RHEL · JBoss · Nagios · Control-M · SLA.">
 
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ===================== BOOT SCREEN ===================== -->
+    <!-- ===== CURSOR ===== -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+
+    <!-- ===== BOOT SCREEN ===== -->
     <div id="boot-screen">
         <div class="boot-container">
-            <pre class="boot-logo">
+            <pre class="boot-logo" id="boot-logo">
  _       _   ___  _  _   _  _  ___  ___  _  _  ___  _
 | |     /_\ |   \| \| | | |/ /| __|| _ \| \| || __|| |
 | |__  / _ \| |) | .` | | ' < | _| |   /| .` || _| | |__
 |____|/_/ \_\|___/|_|\_| |_|\_\|___||_|_\|_|\_||___||____|</pre>
+            <div class="boot-version">&gt; PORTFOLIO SYSTEM v3.0 // NEREA GF</div>
             <div id="boot-lines"></div>
             <div>
                 <div class="boot-bar-label">INITIALIZING SYSTEM ...</div>
                 <div class="boot-bar-bg">
                     <div id="boot-bar-fill" class="boot-bar-fill"></div>
                 </div>
+                <div class="boot-bar-pct" id="boot-pct">0%</div>
             </div>
         </div>
     </div>
 
-    <!-- ===================== MATRIX CANVAS ===================== -->
+    <!-- ===== BACKGROUNDS ===== -->
+    <canvas id="particle-canvas"></canvas>
     <canvas id="matrix-canvas"></canvas>
-
-    <!-- ===================== SCANLINES ===================== -->
     <div class="scanlines"></div>
+    <div class="hex-grid"></div>
 
-    <!-- ===================== NAV ===================== -->
-    <nav class="terminal-nav">
-        <div class="nav-brand">[LADYKERNEL]</div>
-        <div class="nav-links">
-            <a href="#about"      class="nav-link">&gt; /about</a>
-            <a href="#skills"     class="nav-link">&gt; /skills</a>
-            <a href="#experience" class="nav-link">&gt; /experience</a>
-            <a href="#projects"   class="nav-link">&gt; /projects</a>
-            <a href="#contact"    class="nav-link">&gt; /contact</a>
+    <!-- ===== NAV ===== -->
+    <nav class="terminal-nav" id="main-nav">
+        <div class="nav-brand">
+            <span class="brand-bracket">[</span>LADYKERNEL<span class="brand-bracket">]</span>
         </div>
+        <div class="nav-links" id="nav-links">
+            <a href="#about"      class="nav-link"><span class="nav-arrow">&gt;</span> /about</a>
+            <a href="#skills"     class="nav-link"><span class="nav-arrow">&gt;</span> /skills</a>
+            <a href="#stats"      class="nav-link"><span class="nav-arrow">&gt;</span> /stats</a>
+            <a href="#experience" class="nav-link"><span class="nav-arrow">&gt;</span> /experience</a>
+            <a href="#projects"   class="nav-link"><span class="nav-arrow">&gt;</span> /projects</a>
+            <a href="#contact"    class="nav-link"><span class="nav-arrow">&gt;</span> /contact</a>
+        </div>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Menú">
+            <span></span><span></span><span></span>
+        </button>
     </nav>
 
-    <!-- ===================== HERO ===================== -->
+    <!-- ===== HERO ===== -->
     <header class="hero" oncontextmenu="return false;">
-        <img src="banner.png" alt="Banner Ladykernel" class="banner-animado">
+        <div class="hero-inner">
+            <img src="banner.png" alt="Banner Ladykernel" class="banner-animado">
+            <div class="hero-tags">
+                <span class="htag"><span class="htag-dot"></span> LINUX / RHEL</span>
+                <span class="htag"><span class="htag-dot p"></span> JBOSS / WILDFLY</span>
+                <span class="htag"><span class="htag-dot b"></span> NAGIOS</span>
+                <span class="htag"><span class="htag-dot g"></span> CONTROL-M</span>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>&gt; SCROLL_DOWN</span>
+            <div class="scroll-line"></div>
+        </div>
     </header>
 
-    <!-- ===================== MAIN ===================== -->
+
+    <!-- ===== MAIN GRID ===== -->
     <main class="dashboard-grid">
 
-        <!-- SYSTEM_STATUS -->
-        <div id="about" class="panel-glass reveal">
-            <h2 class="panel-titulo">
+        <!-- SYSTEM STATUS -->
+        <div id="about" class="panel-holo reveal">
+            <div class="panel-border-anim"></div>
+            <h2 class="panel-titulo glitch-text" data-text="SYSTEM_STATUS // Sobre Mí">
                 <span class="led verde"></span> SYSTEM_STATUS // Sobre Mí
             </h2>
-            <p><strong>Identificación:</strong> Nerea GF</p>
-            <p><strong>Rol:</strong> Técnica de Sistemas Linux &amp;&amp; Operaciones</p>
-            <p><strong>Uptime:</strong> <span id="uptime-counter">Calculando...</span></p>
-            <p style="margin-top: 10px; line-height: 1.7;">
-                <strong>Core Info:</strong>
+            <p><strong class="key">Identificación:</strong> <span class="val">Nerea GF</span></p>
+            <p><strong class="key">Rol:</strong> <span class="val">Técnica de Sistemas Linux &amp;&amp; Operaciones</span></p>
+            <p><strong class="key">Uptime:</strong> <span id="uptime-counter" class="val-green">Calculando...</span></p>
+            <p><strong class="key">Status:</strong> <span class="val-cyan">RUNNING_STABLE // PRODUCTION_READY</span></p>
+            <p style="margin-top:12px; line-height:1.8; color:#ccc; font-size:0.9em;">
                 Perfil técnico enfocado en la administración de entornos Linux y resolución de incidencias.
                 Experiencia práctica en despliegues PROD/NON-PROD, coordinación de releases, monitorización,
                 análisis de logs y gestión de incidencias. Apasionada por la cultura Open Source,
@@ -97,138 +120,158 @@
             </div>
         </div>
 
-        <!-- RESOURCE_ALLOCATION -->
-        <div id="skills" class="panel-glass reveal">
+        <!-- RESOURCE ALLOCATION -->
+        <div id="skills" class="panel-holo reveal">
+            <div class="panel-border-anim"></div>
             <h2 class="panel-titulo">
                 <span class="led azul"></span> RESOURCE_ALLOCATION // Habilidades
             </h2>
-
             <div class="skill-item">
                 <div class="skill-header">
                     <span class="skill-label">Linux / Server Administration</span>
                     <span class="skill-pct">DAILY_USE</span>
                 </div>
-                <div class="barra-fondo">
-                    <div class="barra-progreso" data-width="85"></div>
-                </div>
+                <div class="barra-fondo"><div class="barra-progreso" data-width="85"></div></div>
             </div>
-
             <div class="skill-item">
                 <div class="skill-header">
                     <span class="skill-label">App Deployment (PROD / NON-PROD)</span>
                     <span class="skill-pct">DAILY_USE</span>
                 </div>
-                <div class="barra-fondo">
-                    <div class="barra-progreso" data-width="85"></div>
-                </div>
+                <div class="barra-fondo"><div class="barra-progreso" data-width="85"></div></div>
             </div>
-
             <div class="skill-item">
                 <div class="skill-header">
                     <span class="skill-label">Incident Mgmt &amp; SLA Compliance</span>
                     <span class="skill-pct">SLA_OK</span>
                 </div>
-                <div class="barra-fondo">
-                    <div class="barra-progreso" data-width="85"></div>
-                </div>
+                <div class="barra-fondo"><div class="barra-progreso" data-width="90"></div></div>
             </div>
-
             <div class="skill-item">
                 <div class="skill-header">
                     <span class="skill-label">Log Analysis &amp; System Security</span>
                     <span class="skill-pct">APPLIED</span>
                 </div>
-                <div class="barra-fondo">
-                    <div class="barra-progreso" data-width="70"></div>
-                </div>
+                <div class="barra-fondo"><div class="barra-progreso" data-width="70"></div></div>
             </div>
-
             <div class="skill-item">
                 <div class="skill-header">
                     <span class="skill-label">IT Coordination &amp; Project Mgmt</span>
                     <span class="skill-pct">IN_PROGRESS</span>
                 </div>
-                <div class="barra-fondo">
-                    <div class="barra-progreso" data-width="30"></div>
+                <div class="barra-fondo"><div class="barra-progreso" data-width="55"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header">
+                    <span class="skill-label">Bash Scripting &amp; Automation</span>
+                    <span class="skill-pct">ACTIVE</span>
+                </div>
+                <div class="barra-fondo"><div class="barra-progreso" data-width="78"></div></div>
+            </div>
+        </div>
+
+        <!-- STATS ROW -->
+        <div id="stats" class="panel-holo panel-largo reveal">
+            <div class="panel-border-anim"></div>
+            <h2 class="panel-titulo" style="justify-content:center; margin-bottom:30px;">
+                <span class="led morado"></span> SYSTEM_METRICS // Estadísticas
+            </h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-num" data-target="15" data-suffix="+">0</div>
+                    <div class="stat-label">años en<br>producción</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num" data-target="99" data-suffix=".9%">0</div>
+                    <div class="stat-label">SLA<br>compliance</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num" data-target="3" data-suffix=" stacks">0</div>
+                    <div class="stat-label">plataformas<br>dominadas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num" data-target="500" data-suffix="+">0</div>
+                    <div class="stat-label">incidencias<br>gestionadas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num" data-target="24" data-suffix="/7">0</div>
+                    <div class="stat-label">uptime<br>monitoring</div>
                 </div>
             </div>
         </div>
 
-        <!-- TRAINING_LOADED -->
-        <div class="panel-glass panel-largo reveal">
+        <!-- TRAINING -->
+        <div class="panel-holo panel-largo reveal">
+            <div class="panel-border-anim"></div>
             <h2 class="panel-titulo">
                 <span class="led naranja"></span> TRAINING_LOADED // Formación
             </h2>
             <div class="cursos-grid">
-
-                <div class="curso-item">
+                <div class="curso-item tilt-card">
                     <div class="curso-icono">📄</div>
                     <div class="curso-info">
                         <strong>Red Hat System Administration (RHSA)</strong>
-                        <span>Administración de sistemas Red Hat Enterprise Linux</span><br>
+                        <span>Administración de sistemas Red Hat Enterprise Linux</span>
                         <span class="curso-badge">Formación Especializada</span>
                     </div>
                 </div>
-
-                <div class="curso-item">
+                <div class="curso-item tilt-card">
                     <div class="curso-icono">🛡️</div>
                     <div class="curso-info">
                         <strong>Ciberseguridad</strong>
-                        <span>Programa Formación Ciberseguridad UNIR</span><br>
+                        <span>Programa Formación Ciberseguridad UNIR</span>
                         <span class="curso-badge">Formación Especializada</span>
                     </div>
                 </div>
-
-                <div class="curso-item">
+                <div class="curso-item tilt-card">
                     <div class="curso-icono">📋</div>
                     <div class="curso-info">
                         <strong>Gestión de Proyectos</strong>
-                        <span>Coordinación y planificación de proyectos tecnológicos</span><br>
+                        <span>Coordinación y planificación de proyectos tecnológicos</span>
                         <span class="curso-badge">Formación Especializada</span>
                     </div>
                 </div>
-
-                <div class="curso-item">
+                <div class="curso-item tilt-card">
                     <div class="curso-icono">⚙️</div>
                     <div class="curso-info">
                         <strong>Administración de Servidores JBoss / WildFly</strong>
-                        <span>Despliegue, configuración y gestión de aplicaciones en JBoss</span><br>
+                        <span>Despliegue, configuración y gestión de aplicaciones en JBoss</span>
                         <span class="curso-badge">Formación Especializada</span>
                     </div>
                 </div>
-
-                <div class="curso-item">
+                <div class="curso-item tilt-card">
                     <div class="curso-icono">📊</div>
                     <div class="curso-info">
                         <strong>Monitorización con Nagios</strong>
-                        <span>Supervisión de infraestructura y alertas en entornos Linux</span><br>
+                        <span>Supervisión de infraestructura y alertas en entornos Linux</span>
                         <span class="curso-badge">Aplicado en Producción</span>
                     </div>
                 </div>
-
-                <div class="curso-item">
+                <div class="curso-item tilt-card">
                     <div class="curso-icono">🕐</div>
                     <div class="curso-info">
                         <strong>Planificación de Jobs con Control-M</strong>
-                        <span>Automatización y revisión de flujos de trabajo y backups</span><br>
+                        <span>Automatización y revisión de flujos de trabajo y backups</span>
                         <span class="curso-badge">Aplicado en Producción</span>
                     </div>
                 </div>
-
             </div>
         </div>
 
-        <!-- EVENT_LOGS -->
-        <div id="experience" class="panel-glass panel-largo reveal">
+        <!-- EXPERIENCE TIMELINE -->
+        <div id="experience" class="panel-holo panel-largo reveal">
+            <div class="panel-border-anim"></div>
             <h2 class="panel-titulo">
                 <span class="led morado"></span> EVENT_LOGS // Experiencia
             </h2>
-            <div class="log-table">
+            <div class="timeline">
 
-                <div class="log-row log-activo">
-                    <span class="log-time">[TIMESTAMP: 2019-PRESENT]</span>
-                    <div class="log-event">
-                        <strong class="log-titulo-activo">&gt; SYSTEMS TECHNICIAN &amp; OPERATIONS</strong>
+                <div class="timeline-item timeline-active">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-line"></div>
+                    <div class="timeline-content tilt-card">
+                        <div class="timeline-date">[TIMESTAMP: 2019 — PRESENT]</div>
+                        <h3 class="timeline-title">&gt; SYSTEMS TECHNICIAN &amp; OPERATIONS</h3>
                         <ul class="log-lista">
                             <li><span class="log-hash">#</span> <strong>Main Stack:</strong> Linux Administration, App Deployment (PROD/NON-PROD).</li>
                             <li><span class="log-hash">#</span> <strong>Releases:</strong> Coordinación de hitos, ventanas de cambio y validaciones post-despliegue.</li>
@@ -239,11 +282,12 @@
                     </div>
                 </div>
 
-                <div class="log-row log-previo">
-                    <span class="log-time log-time-dim">[TIMESTAMP: PREVIOUS_LEVEL]</span>
-                    <div class="log-event">
-                        <strong class="log-titulo-previo">&gt; SYSTEMS OPERATOR (MAINFRAME &amp; LINUX)</strong>
-                        <ul class="log-lista log-lista-dim">
+                <div class="timeline-item timeline-past">
+                    <div class="timeline-dot past"></div>
+                    <div class="timeline-content tilt-card">
+                        <div class="timeline-date" style="color:#555;">[TIMESTAMP: PREVIOUS_LEVEL]</div>
+                        <h3 class="timeline-title past">&gt; SYSTEMS OPERATOR (MAINFRAME &amp; LINUX)</h3>
+                        <ul class="log-lista" style="color:#777;">
                             <li><span class="log-hash-dim">#</span> <strong>Core Systems:</strong> Gestión y revisión de sistemas en máquina Mainframe.</li>
                             <li><span class="log-hash-dim">#</span> <strong>Operations:</strong> Ejecución y revisión de IPLs de sistemas y flujos de trabajo.</li>
                             <li><span class="log-hash-dim">#</span> <strong>Stability:</strong> Supervisión de procesos críticos para asegurar la continuidad del servicio.</li>
@@ -254,42 +298,43 @@
             </div>
         </div>
 
-        <!-- GITHUB_INTEGRATION -->
-        <div id="projects" class="panel-glass panel-largo reveal">
+        <!-- PROJECTS -->
+        <div id="projects" class="panel-holo panel-largo reveal">
+            <div class="panel-border-anim"></div>
             <h2 class="panel-titulo">
                 <span class="led verde"></span> GITHUB_INTEGRATION // Proyectos Destacados
             </h2>
             <div id="github-repos" class="grid-proyectos">
-                <p class="loading-text">&gt; Estableciendo conexión con la API de GitHub...</p>
+                <p class="loading-text">&gt; Estableciendo conexión...</p>
             </div>
         </div>
 
-        <!-- SECURE_COMMS -->
-        <div id="contact" class="panel-glass panel-largo reveal" style="text-align:center;">
+        <!-- CONTACT -->
+        <div id="contact" class="panel-holo panel-largo reveal" style="text-align:center;">
+            <div class="panel-border-anim"></div>
             <h2 class="panel-titulo" style="justify-content:center;">
                 <span class="led azul"></span> SECURE_COMMS // Contacto
             </h2>
             <p class="contacto-desc">
-                ¿Buscas una técnica de sistemas con experiencia en entornos Linux de producción?<br>Hablemos.
+                ¿Buscas una técnica de sistemas con experiencia en entornos Linux de producción?<br>
+                <span style="color:var(--cyan); font-size:0.9em;">&gt; Hablemos.</span>
             </p>
             <div class="botones-contacto">
-                <a href="mailto:hola@lksys.es" class="btn-cibernetico">Enviar Email</a>
-                <a href="https://www.elrincondenerea.es/R/LinkedIn" target="_blank" rel="noopener noreferrer" class="btn-cibernetico">Acceso a LinkedIn</a>
-                <button onclick="abrirCV()" class="btn-cibernetico">Acceso a CV</button>
+                <a href="mailto:hola@lksys.es" class="btn-cibernetico">
+                    <span class="btn-icon">✉</span> Enviar Email
+                </a>
+                <a href="https://www.elrincondenerea.es/R/LinkedIn" target="_blank" rel="noopener noreferrer" class="btn-cibernetico btn-linkedin">
+                    <span class="btn-icon">in</span> Acceso a LinkedIn
+                </a>
+                <button onclick="abrirCV()" class="btn-cibernetico btn-cv">
+                    <span class="btn-icon">⬡</span> Acceso a CV
+                </button>
             </div>
         </div>
 
     </main>
 
-    <!-- ===================== BADGE ===================== -->
-    <div class="disponibilidad-badge">
-        <div class="badge-inner">
-            <span class="badge-dot"></span>
-            OPEN TO WORK // DISPONIBLE PARA NUEVAS OPORTUNIDADES
-        </div>
-    </div>
-
-    <!-- ===================== MODAL CV ===================== -->
+    <!-- ===== MODAL CV ===== -->
     <div id="modalCV" class="modal-cv">
         <div class="modal-contenido">
             <div class="modal-header">
@@ -303,19 +348,44 @@
             </div>
         </div>
     </div>
-
-    <!-- ===================== FOOTER ===================== -->
-    <footer class="site-footer">
-        <div class="footer-main">
-            <span style="color:#fff;">[</span> © 2026 LADYKERNEL // ALL RIGHTS RESERVED <span style="color:#fff;">]</span>
+    <!-- ===== AVAILABILITY BADGE ===== -->
+    <div class="disponibilidad-badge">
+        <div class="badge-inner">
+            <span class="badge-dot"></span>
+            OPEN TO WORK // DISPONIBLE PARA NUEVAS OPORTUNIDADES
         </div>
+    </div>
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <span class="footer-logo">[LADYKERNEL]</span>
+                <p>Nerea GF // IT Systems Technician<br>Linux · JBoss · Nagios · Control-M</p>
+            </div>
+            <div class="footer-links">
+                <span class="footer-title">&gt; NAVIGATION</span>
+                <a href="#about">/about</a>
+                <a href="#skills">/skills</a>
+                <a href="#experience">/experience</a>
+                <a href="#projects">/projects</a>
+                <a href="#contact">/contact</a>
+            </div>
+            <div class="footer-status">
+                <span class="footer-title">&gt; SYSTEM_STATUS</span>
+                <span><span class="dot-green"></span> Producción: STABLE</span>
+                <span><span class="dot-green"></span> SLA: COMPLIANT</span>
+                <span><span class="dot-cyan"></span> Open to Work: YES</span>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>[ © 2026 LADYKERNEL // ALL RIGHTS RESERVED ]</span>
         <div class="footer-sub">
             Prohibida la reproducción total o parcial del código y contenido de este sistema sin autorización.
         </div>
-        <div class="footer-tiny">TRACED_IP_ACTIVE // ENCRYPTED_LICENSE_v2.1</div>
+            <span class="footer-tiny">TRACED_IP_ACTIVE // ENCRYPTED_LICENSE_v3.0</span>
+        </div>
     </footer>
-
-    <script data-goatcounter="h....."></script>
+    <script data-goatcounter="https://ladykernel.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
